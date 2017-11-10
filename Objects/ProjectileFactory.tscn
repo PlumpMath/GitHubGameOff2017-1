@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=1]
+[gd_scene load_steps=5 format=1]
 
 [ext_resource path="res://Scripts/ProjectileFactory.gd" type="Script" id=1]
 [ext_resource path="res://Scripts/ProjectileGroup.gd" type="Script" id=2]
 [ext_resource path="res://Sprites/projectile.png" type="Texture" id=3]
+[ext_resource path="res://Objects/CollisionWidget.tscn" type="PackedScene" id=4]
 
 [node name="ProjectileFactory" type="Node"]
 
@@ -12,170 +13,197 @@ script/script = ExtResource( 1 )
 
 script/script = ExtResource( 2 )
 
-[node name="Projectile1" type="Sprite" parent="Group1"]
+[node name="Sprites" type="Node" parent="Group1"]
+
+[node name="Projectile1" type="Sprite" parent="Group1/Sprites"]
 
 visibility/visible = false
 transform/pos = Vector2( 1046.56, 55.142 )
 transform/rot = 75.0
 texture = ExtResource( 3 )
 
-[node name="Projectile2" type="Sprite" parent="Group1"]
+[node name="Projectile2" type="Sprite" parent="Group1/Sprites"]
 
 visibility/visible = false
 transform/pos = Vector2( 919.247, 38.7097 )
 transform/rot = 90.0
 texture = ExtResource( 3 )
 
-[node name="Projectile3" type="Sprite" parent="Group1"]
+[node name="Projectile3" type="Sprite" parent="Group1/Sprites"]
 
 visibility/visible = false
 transform/pos = Vector2( 769.271, 54.8579 )
 transform/rot = 102.0
 texture = ExtResource( 3 )
 
-[node name="Projectile4" type="Sprite" parent="Group1"]
+[node name="Projectile4" type="Sprite" parent="Group1/Sprites"]
 
 visibility/visible = false
 transform/pos = Vector2( 635.309, 111.499 )
 transform/rot = 120.0
 texture = ExtResource( 3 )
 
-[node name="Projectile5" type="Sprite" parent="Group1"]
+[node name="Projectile5" type="Sprite" parent="Group1/Sprites"]
 
 visibility/visible = false
 transform/pos = Vector2( 514.481, 206.983 )
 transform/rot = 135.0
+transform/scale = Vector2( 1, 1 )
 texture = ExtResource( 3 )
 
-[node name="Projectile6" type="Sprite" parent="Group1"]
+[node name="Projectile6" type="Sprite" parent="Group1/Sprites"]
 
 visibility/visible = false
 transform/pos = Vector2( 425.971, 330.338 )
 transform/rot = 150.0
 texture = ExtResource( 3 )
 
-[node name="Projectile7" type="Sprite" parent="Group1"]
+[node name="Projectile7" type="Sprite" parent="Group1/Sprites"]
 
 visibility/visible = false
 transform/pos = Vector2( 385.712, 470.947 )
 transform/rot = 175.0
 texture = ExtResource( 3 )
 
+[node name="CollisionWidget" parent="Group1" instance=ExtResource( 4 )]
+
+transform/pos = Vector2( 48, 592 )
+
 [node name="Group2" type="Node" parent="."]
 
 script/script = ExtResource( 2 )
 
-[node name="Projectile1" type="Sprite" parent="Group2"]
+[node name="Sprites" type="Node" parent="Group2"]
+
+[node name="Projectile1" type="Sprite" parent="Group2/Sprites"]
 
 visibility/visible = false
 transform/pos = Vector2( 1035.71, 110.489 )
 transform/rot = 90.0
 texture = ExtResource( 3 )
 
-[node name="Projectile2" type="Sprite" parent="Group2"]
+[node name="Projectile2" type="Sprite" parent="Group2/Sprites"]
 
 visibility/visible = false
 transform/pos = Vector2( 917.457, 128.5 )
 transform/rot = 100.0
+transform/scale = Vector2( 1, 1 )
 texture = ExtResource( 3 )
 
-[node name="Projectile3" type="Sprite" parent="Group2"]
+[node name="Projectile3" type="Sprite" parent="Group2/Sprites"]
 
 visibility/visible = false
 transform/pos = Vector2( 793.644, 181.521 )
 transform/rot = 115.0
 texture = ExtResource( 3 )
 
-[node name="Projectile4" type="Sprite" parent="Group2"]
+[node name="Projectile4" type="Sprite" parent="Group2/Sprites"]
 
 visibility/visible = false
 transform/pos = Vector2( 689.831, 259.997 )
 transform/rot = 135.0
+transform/scale = Vector2( 1, 1 )
 texture = ExtResource( 3 )
 
-[node name="Projectile5" type="Sprite" parent="Group2"]
+[node name="Projectile5" type="Sprite" parent="Group2/Sprites"]
 
 visibility/visible = false
 transform/pos = Vector2( 610.493, 367.116 )
 transform/rot = 155.0
 texture = ExtResource( 3 )
 
-[node name="Projectile6" type="Sprite" parent="Group2"]
+[node name="Projectile6" type="Sprite" parent="Group2/Sprites"]
 
 visibility/visible = false
 transform/pos = Vector2( 573.298, 481.27 )
 transform/rot = 170.0
 texture = ExtResource( 3 )
 
+[node name="CollisionWidget" parent="Group2" instance=ExtResource( 4 )]
+
+transform/pos = Vector2( 80, 608 )
+
 [node name="Group3" type="Node" parent="."]
 
 script/script = ExtResource( 2 )
 
-[node name="Projectile1" type="Sprite" parent="Group3"]
+[node name="Sprites" type="Node" parent="Group3"]
+
+[node name="Projectile1" type="Sprite" parent="Group3/Sprites"]
 
 visibility/visible = false
 transform/pos = Vector2( 1047.08, 166.5 )
 transform/rot = 115.0
 texture = ExtResource( 3 )
 
-[node name="Projectile2" type="Sprite" parent="Group3"]
+[node name="Projectile2" type="Sprite" parent="Group3/Sprites"]
 
 visibility/visible = false
 transform/pos = Vector2( 949.755, 218.382 )
 transform/rot = 125.0
 texture = ExtResource( 3 )
 
-[node name="Projectile3" type="Sprite" parent="Group3"]
+[node name="Projectile3" type="Sprite" parent="Group3/Sprites"]
 
 visibility/visible = false
 transform/pos = Vector2( 861.813, 290.452 )
 transform/rot = 140.0
 texture = ExtResource( 3 )
 
-[node name="Projectile4" type="Sprite" parent="Group3"]
+[node name="Projectile4" type="Sprite" parent="Group3/Sprites"]
 
 visibility/visible = false
 transform/pos = Vector2( 801.298, 381.76 )
 transform/rot = 160.0
 texture = ExtResource( 3 )
 
-[node name="Projectile5" type="Sprite" parent="Group3"]
+[node name="Projectile5" type="Sprite" parent="Group3/Sprites"]
 
 visibility/visible = false
 transform/pos = Vector2( 778.774, 481.691 )
 transform/rot = 175.0
 texture = ExtResource( 3 )
 
+[node name="CollisionWidget" parent="Group3" instance=ExtResource( 4 )]
+
+transform/pos = Vector2( 112, 624 )
+
 [node name="Group4" type="Node" parent="."]
 
 script/script = ExtResource( 2 )
 
-[node name="Projectile1" type="Sprite" parent="Group4"]
+[node name="Sprites" type="Node" parent="Group4"]
+
+[node name="Projectile1" type="Sprite" parent="Group4/Sprites"]
 
 visibility/visible = false
 transform/pos = Vector2( 1074, 213.67 )
 transform/rot = 130.0
 texture = ExtResource( 3 )
 
-[node name="Projectile2" type="Sprite" parent="Group4"]
+[node name="Projectile2" type="Sprite" parent="Group4/Sprites"]
 
 visibility/visible = false
 transform/pos = Vector2( 1007.65, 287.824 )
 transform/rot = 145.0
 texture = ExtResource( 3 )
 
-[node name="Projectile3" type="Sprite" parent="Group4"]
+[node name="Projectile3" type="Sprite" parent="Group4/Sprites"]
 
 visibility/visible = false
 transform/pos = Vector2( 964.809, 376.467 )
 transform/rot = 170.0
 texture = ExtResource( 3 )
 
-[node name="Projectile4" type="Sprite" parent="Group4"]
+[node name="Projectile4" type="Sprite" parent="Group4/Sprites"]
 
 visibility/visible = false
 transform/pos = Vector2( 958.569, 479.627 )
-transform/rot = -180.0
+transform/rot = 180.0
 texture = ExtResource( 3 )
+
+[node name="CollisionWidget" parent="Group4" instance=ExtResource( 4 )]
+
+transform/pos = Vector2( 144, 640 )
 
 

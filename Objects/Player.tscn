@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=1]
+[gd_scene load_steps=8 format=1]
 
 [ext_resource path="res://Scripts/Player.gd" type="Script" id=1]
 [ext_resource path="res://Sprites/player1.png" type="Texture" id=2]
@@ -6,6 +6,11 @@
 [ext_resource path="res://Sprites/player3.png" type="Texture" id=4]
 [ext_resource path="res://Sprites/player4.png" type="Texture" id=5]
 [ext_resource path="res://Sprites/player5.png" type="Texture" id=6]
+
+[sub_resource type="RectangleShape2D" id=1]
+
+custom_solver_bias = 0.0
+extents = Vector2( 5, 5 )
 
 [node name="Player" type="Node"]
 
@@ -19,28 +24,64 @@ visibility/visible = false
 transform/pos = Vector2( 168.617, 569.319 )
 texture = ExtResource( 2 )
 
-[node name="Sprite1" type="Sprite" parent="Positions"]
+[node name="Sprite 2" type="Sprite" parent="Positions"]
 
 visibility/visible = false
 transform/pos = Vector2( 385.723, 569.319 )
 texture = ExtResource( 3 )
 
-[node name="Sprite2" type="Sprite" parent="Positions"]
+[node name="Sprite 3" type="Sprite" parent="Positions"]
 
 visibility/visible = false
 transform/pos = Vector2( 569.425, 571.885 )
 texture = ExtResource( 4 )
 
-[node name="Sprite3" type="Sprite" parent="Positions"]
+[node name="Sprite 4" type="Sprite" parent="Positions"]
 
 visibility/visible = false
 transform/pos = Vector2( 774.839, 570.99 )
 texture = ExtResource( 5 )
 
-[node name="Sprite4" type="Sprite" parent="Positions"]
+[node name="Sprite 5" type="Sprite" parent="Positions"]
 
 visibility/visible = false
 transform/pos = Vector2( 963.873, 572.66 )
 texture = ExtResource( 6 )
+
+[node name="CollisionWidget" type="Node2D" parent="."]
+
+transform/pos = Vector2( 16, 704 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Target" type="Area2D" parent="CollisionWidget"]
+
+transform/pos = Vector2( -8, 0 )
+input/pickable = false
+shapes/0/shape = SubResource( 1 )
+shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
+shapes/0/trigger = false
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Collision" type="CollisionShape2D" parent="CollisionWidget/Target"]
+
+shape = SubResource( 1 )
+trigger = false
+_update_shape_index = 0
+
+[node name="Detect" type="RayCast2D" parent="CollisionWidget"]
+
+transform/pos = Vector2( 8, 0 )
+enabled = true
+cast_to = Vector2( 0, -16 )
+layer_mask = 1
+type_mask = 16
 
 
