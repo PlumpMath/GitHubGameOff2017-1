@@ -1,5 +1,6 @@
 extends Node
 
+signal collide
 
 var projectile_index = 0
 var widget_offset = Vector2(0, 16)
@@ -31,5 +32,5 @@ func _on_tick():
 	var detector = collision_widget.get_node("Detect")
 	detector.force_raycast_update()
 	if detector.is_colliding():
-		print("projectile hit player")
+		emit_signal("collide")
 

@@ -1,6 +1,8 @@
 extends Node
 
 
+signal collide
+
 const widget_offset = Vector2(32, 0)
 
 var min_frame = 0
@@ -39,5 +41,6 @@ func move(direction):
 	var detector = collision_widget.get_node("Detect")
 	detector.force_raycast_update()
 	if detector.is_colliding():
-		print("player hit projectile")
+		emit_signal("collide")
+		queue_free()
 

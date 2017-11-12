@@ -50,6 +50,7 @@ texture = ExtResource( 6 )
 
 [node name="CollisionWidget" type="Node2D" parent="."]
 
+editor/display_folded = true
 transform/pos = Vector2( 16, 704 )
 __meta__ = {
 "_edit_group_": true
