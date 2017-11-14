@@ -17,6 +17,7 @@ func _ready():
 	
 	var player = get_node("Player")
 	player.connect("collide", self, "_on_collision")
+	player.connect("score", hud, "_on_score")
 	
 	retry_timer.connect("timeout", self, "_on_retry")
 	retry_timer.connect("timeout", hud, "_on_retry")
@@ -57,6 +58,7 @@ func _on_retry():
 	
 	var player = player_scene.instance()
 	player.connect("collide", self, "_on_collision")
+	player.connect("score", hud, "_on_score")
 	add_child(player)
 
 

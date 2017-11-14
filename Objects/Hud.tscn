@@ -5,7 +5,6 @@
 
 [node name="Hud" type="Control"]
 
-anchor/top = 1
 anchor/right = 1
 anchor/bottom = 1
 focus/ignore_mouse = false
@@ -13,7 +12,7 @@ focus/stop_mouse = true
 size_flags/horizontal = 2
 size_flags/vertical = 2
 margin/left = 0.0
-margin/top = 72.0
+margin/top = 0.0
 margin/right = 0.0
 margin/bottom = 0.0
 script/script = ExtResource( 1 )
@@ -27,9 +26,9 @@ focus/stop_mouse = true
 size_flags/horizontal = 2
 size_flags/vertical = 2
 margin/left = 751.0
-margin/top = -21.0
+margin/top = 640.0
 margin/right = 831.0
-margin/bottom = 89.0
+margin/bottom = 750.0
 texture = ExtResource( 2 )
 stretch_mode = 0
 
@@ -41,9 +40,9 @@ focus/stop_mouse = true
 size_flags/horizontal = 2
 size_flags/vertical = 0
 margin/left = 0.0
-margin/top = 0.0
+margin/top = 640.0
 margin/right = 64.0
-margin/bottom = 36.0
+margin/bottom = 676.0
 text = "MISS"
 align = 1
 valign = 1
@@ -58,10 +57,28 @@ focus/stop_mouse = false
 size_flags/horizontal = 2
 size_flags/vertical = 2
 margin/left = 112.0
-margin/top = 0.0
+margin/top = 640.0
 margin/right = 320.0
-margin/bottom = 72.0
+margin/bottom = 712.0
 custom_constants/separation = 16
 alignment = 0
+
+[node name="ScoreLabel" type="Label" parent="."]
+
+rect/scale = Vector2( 3, 3 )
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 0
+margin/left = 0.0
+margin/top = 0.0
+margin/right = 64.0
+margin/bottom = 21.0
+text = "0"
+align = 2
+valign = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
 
 

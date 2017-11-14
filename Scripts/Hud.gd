@@ -1,6 +1,8 @@
 extends Control
 
 
+var score = 0
+
 var miss_sprite = preload("res://Sprites/player_icon.png")
 
 onready var miss_indicator = get_node("MissIndicator")
@@ -22,3 +24,8 @@ func missed():
 func _on_retry():
 	miss_indicator.hide()
 
+
+func _on_score():
+	score += 1
+	var label = get_node("ScoreLabel")
+	label.set_text(str(score))
