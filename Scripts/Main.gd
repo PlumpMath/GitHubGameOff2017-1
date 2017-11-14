@@ -1,9 +1,14 @@
 extends Node
 
+
+signal tick(tick_index)
+
 const miss_max = 3
 
-var tick_index = 0;
-var miss = 0;
+var tick_counter = 0
+var cycle_count = 0
+var create_count = 0
+var miss = 0
 
 onready var projectile_timer = get_node("ProjectileTimer")
 onready var retry_timer = get_node("RetryTimer")
@@ -11,6 +16,7 @@ onready var hud = get_node("Hud")
 
 var projectile_factory = preload("res://Objects/ProjectileFactory.tscn")
 var player_scene = preload("res://Objects/Player.tscn")
+
 
 func _ready():
 	create_projectile()
@@ -27,15 +33,23 @@ func _ready():
 
 
 func _on_projectile_timeout():
-	tick_index += 1
-	if tick_index % 2 == 0:
-		create_projectile()
+	var tick_index = (tick_counter % 4) + 1
+	emit_signal("tick", tick_index)
+	tick_counter += 1
+	
+	if tick_index == 4:
+		cycle_count += 1
+		if cycle_count % 3 == 0:
+			if create_count % 3 == 0:
+				create_projectile()
+			create_projectile()
+			create_count += 1
 
 
 func create_projectile():
 	var factory = projectile_factory.instance()
 	var projectile = factory.get_projectile()
-	projectile_timer.connect("timeout", projectile, "_on_tick")
+	connect("tick", projectile, "_on_tick")
 	projectile.connect("collide", self, "_on_collision")
 	add_child(projectile)
 

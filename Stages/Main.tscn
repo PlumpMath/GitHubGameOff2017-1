@@ -11,7 +11,7 @@ script/script = ExtResource( 1 )
 [node name="ProjectileTimer" type="Timer" parent="."]
 
 process_mode = 1
-wait_time = 0.75
+wait_time = 0.2
 one_shot = false
 autostart = false
 
