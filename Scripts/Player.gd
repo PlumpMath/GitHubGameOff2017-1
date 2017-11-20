@@ -7,7 +7,7 @@ signal score
 const widget_offset = Vector2(32, 0)
 
 var min_frame = 0
-var max_frame = 4
+var max_frame = 5
 var current_frame = 0
 var has_treasure = false
 

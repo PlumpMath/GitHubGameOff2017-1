@@ -58,7 +58,7 @@ texture = ExtResource( 2 )
 [node name="Sprite1" type="Sprite" parent="Treasure"]
 
 visibility/visible = false
-transform/pos = Vector2( 342.409, 592.842 )
+transform/pos = Vector2( 281.321, 600.172 )
 transform/rot = -44.5993
 transform/scale = Vector2( 0.4, 0.4 )
 texture = ExtResource( 2 )
@@ -66,7 +66,7 @@ texture = ExtResource( 2 )
 [node name="Sprite2" type="Sprite" parent="Treasure"]
 
 visibility/visible = false
-transform/pos = Vector2( 518.343, 607.503 )
+transform/pos = Vector2( 419.787, 614.019 )
 transform/rot = -74.2472
 transform/scale = Vector2( 0.4, 0.4 )
 texture = ExtResource( 2 )
@@ -74,12 +74,20 @@ texture = ExtResource( 2 )
 [node name="Sprite3" type="Sprite" parent="Treasure"]
 
 visibility/visible = false
-transform/pos = Vector2( 825.412, 560.261 )
-transform/rot = 68.6925
+transform/pos = Vector2( 691.018, 609.132 )
+transform/rot = 61.6954
 transform/scale = Vector2( 0.4, 0.4 )
 texture = ExtResource( 2 )
 
 [node name="Sprite4" type="Sprite" parent="Treasure"]
+
+visibility/visible = false
+transform/pos = Vector2( 843.331, 564.334 )
+transform/rot = 68.6925
+transform/scale = Vector2( 0.4, 0.4 )
+texture = ExtResource( 2 )
+
+[node name="Sprite5" type="Sprite" parent="Treasure"]
 
 visibility/visible = false
 transform/pos = Vector2( 917.451, 607.503 )
@@ -97,22 +105,29 @@ texture = ExtResource( 3 )
 [node name="Sprite 2" type="Sprite" parent="Positions"]
 
 visibility/visible = false
-transform/pos = Vector2( 385.723, 569.319 )
+transform/pos = Vector2( 323.82, 577.464 )
 texture = ExtResource( 4 )
 
 [node name="Sprite 3" type="Sprite" parent="Positions"]
 
 visibility/visible = false
-transform/pos = Vector2( 569.425, 571.885 )
+transform/pos = Vector2( 469.241, 578.401 )
 texture = ExtResource( 5 )
 
 [node name="Sprite 4" type="Sprite" parent="Positions"]
 
 visibility/visible = false
-transform/pos = Vector2( 774.839, 570.99 )
-texture = ExtResource( 6 )
+transform/pos = Vector2( 640.287, 575.143 )
+texture = ExtResource( 5 )
+flip_h = true
 
 [node name="Sprite 5" type="Sprite" parent="Positions"]
+
+visibility/visible = false
+transform/pos = Vector2( 791.944, 575.877 )
+texture = ExtResource( 6 )
+
+[node name="Sprite 6" type="Sprite" parent="Positions"]
 
 visibility/visible = false
 transform/pos = Vector2( 963.873, 572.66 )

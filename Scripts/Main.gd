@@ -4,11 +4,14 @@ extends Node
 signal tick(tick_index)
 
 const miss_max = 3
+const projectile_columns = 5
 
-var tick_counter = 0
-var cycle_count = 0
-var create_count = 0
+enum mode_type { DROP = -1, REST = 1 }
+
+var tick_index = 0
 var miss = 0
+var current_mode = mode_type.DROP
+var action_count = 0
 
 onready var projectile_timer = get_node("ProjectileTimer")
 onready var retry_timer = get_node("RetryTimer")
@@ -19,7 +22,10 @@ var player_scene = preload("res://Objects/Player.tscn")
 
 
 func _ready():
-	create_projectile()
+	randomize()
+	
+	action_count = generate_action_count(current_mode)
+	take_action()
 	
 	var player = get_node("Player")
 	player.connect("collide", self, "_on_collision")
@@ -33,22 +39,50 @@ func _ready():
 
 
 func _on_projectile_timeout():
-	var tick_index = (tick_counter % 4) + 1
+	tick_index += 1
 	emit_signal("tick", tick_index)
-	tick_counter += 1
 	
-	if tick_index == 4:
-		cycle_count += 1
-		if cycle_count % 3 == 0:
-			if create_count % 3 == 0:
-				create_projectile()
-			create_projectile()
-			create_count += 1
+	if tick_index == projectile_columns:
+		tick_index = 0
+		take_action()
 
 
-func create_projectile():
+func rand_int_range(min_range, max_range):
+	var mod_by = max_range - min_range + 1
+	return (randi() % mod_by) + min_range
+
+
+func generate_action_count(mode):
+	if mode == mode_type.DROP:
+		return rand_int_range(1, 3)
+	
+	return rand_int_range(1, 2)
+
+
+func take_action():
+	
+	if current_mode == mode_type.DROP:
+		drop_projectile()
+	
+	action_count -= 1
+	if action_count == 0:
+		current_mode = -current_mode
+		action_count = generate_action_count(current_mode)
+
+
+func drop_projectile():
+	var projectile_index = rand_int_range(0, projectile_columns - 1)
+	create_projectile(projectile_index)
+	if rand_int_range(0, 3) == 0:
+		var previous_index = projectile_index
+		while previous_index == projectile_index:
+			projectile_index = rand_int_range(0, projectile_columns - 1)
+		create_projectile(projectile_index)
+
+
+func create_projectile(index):
 	var factory = projectile_factory.instance()
-	var projectile = factory.get_projectile()
+	var projectile = factory.get_projectile(index)
 	connect("tick", projectile, "_on_tick")
 	projectile.connect("collide", self, "_on_collision")
 	add_child(projectile)
@@ -74,6 +108,4 @@ func _on_retry():
 	player.connect("collide", self, "_on_collision")
 	player.connect("score", hud, "_on_score")
 	add_child(player)
-
-
 
