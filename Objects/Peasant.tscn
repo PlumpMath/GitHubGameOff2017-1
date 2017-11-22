@@ -1,0 +1,258 @@
+[gd_scene load_steps=19 format=1]
+
+[ext_resource path="res://Scripts/Peasant.gd" type="Script" id=1]
+[ext_resource path="res://Sprites/Peasant/peasant1.png" type="Texture" id=2]
+[ext_resource path="res://Sprites/Peasant/peasant2.png" type="Texture" id=3]
+[ext_resource path="res://Sprites/Peasant/peasant3.png" type="Texture" id=4]
+[ext_resource path="res://Sprites/Peasant/peasant4a.png" type="Texture" id=5]
+[ext_resource path="res://Sprites/Peasant/peasant4b.png" type="Texture" id=6]
+[ext_resource path="res://Sprites/Peasant/peasant4c.png" type="Texture" id=7]
+[ext_resource path="res://Sprites/Treasure/treasure1a.png" type="Texture" id=8]
+[ext_resource path="res://Sprites/Treasure/treasure1b.png" type="Texture" id=9]
+[ext_resource path="res://Sprites/Treasure/treasure1c.png" type="Texture" id=10]
+[ext_resource path="res://Sprites/Treasure/treasure2.png" type="Texture" id=11]
+[ext_resource path="res://Sprites/Treasure/treasure3.png" type="Texture" id=12]
+[ext_resource path="res://Sprites/Treasure/treasure4.png" type="Texture" id=13]
+[ext_resource path="res://Sprites/Treasure/treasure5.png" type="Texture" id=14]
+[ext_resource path="res://Sprites/Treasure/treasure6.png" type="Texture" id=15]
+
+[sub_resource type="SpriteFrames" id=2]
+
+animations = [ {
+"frames": [ ExtResource( 5 ) ],
+"loop": false,
+"name": "default",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 6 ), ExtResource( 5 ), ExtResource( 7 ), ExtResource( 7 ) ],
+"loop": false,
+"name": "gather",
+"speed": 3.0
+} ]
+
+[sub_resource type="SpriteFrames" id=3]
+
+animations = [ {
+"frames": [ ExtResource( 8 ), ExtResource( 9 ), ExtResource( 10 ), ExtResource( 10 ) ],
+"loop": false,
+"name": "default",
+"speed": 6.0
+} ]
+
+[sub_resource type="RectangleShape2D" id=1]
+
+custom_solver_bias = 0.0
+extents = Vector2( 4, 4 )
+
+[node name="Peasant" type="Node"]
+
+script/script = ExtResource( 1 )
+
+[node name="Positions" type="Node" parent="."]
+
+[node name="Sprite" type="Sprite" parent="Positions"]
+
+visibility/visible = false
+transform/pos = Vector2( 240, 560 )
+texture = ExtResource( 2 )
+
+[node name="Sprite1" type="Sprite" parent="Positions"]
+
+visibility/visible = false
+transform/pos = Vector2( 400, 560 )
+texture = ExtResource( 3 )
+
+[node name="Sprite2" type="Sprite" parent="Positions"]
+
+visibility/visible = false
+transform/pos = Vector2( 560, 560 )
+texture = ExtResource( 4 )
+
+[node name="Sprite3" type="Sprite" parent="Positions"]
+
+visibility/visible = false
+transform/pos = Vector2( 720, 560 )
+texture = ExtResource( 2 )
+flip_h = true
+
+[node name="Sprite4" type="Sprite" parent="Positions"]
+
+visibility/visible = false
+transform/pos = Vector2( 880, 560 )
+texture = ExtResource( 3 )
+flip_h = true
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="Positions"]
+
+visibility/visible = false
+transform/pos = Vector2( 1040, 560 )
+frames = SubResource( 2 )
+animation = "default"
+
+[node name="Treasure" type="Node" parent="."]
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="Treasure"]
+
+visibility/visible = false
+transform/pos = Vector2( 132.653, 560.389 )
+frames = SubResource( 3 )
+animation = "default"
+
+[node name="Sprite" type="Sprite" parent="Treasure"]
+
+visibility/visible = false
+transform/pos = Vector2( 454.702, 592.772 )
+texture = ExtResource( 11 )
+
+[node name="Sprite1" type="Sprite" parent="Treasure"]
+
+visibility/visible = false
+transform/pos = Vector2( 611.177, 596.943 )
+texture = ExtResource( 12 )
+
+[node name="Sprite2" type="Sprite" parent="Treasure"]
+
+visibility/visible = false
+transform/pos = Vector2( 754.175, 555.427 )
+texture = ExtResource( 13 )
+
+[node name="Sprite3" type="Sprite" parent="Treasure"]
+
+visibility/visible = false
+transform/pos = Vector2( 921.094, 569.207 )
+texture = ExtResource( 14 )
+
+[node name="Sprite4" type="Sprite" parent="Treasure"]
+
+visibility/visible = false
+transform/pos = Vector2( 981.992, 576.362 )
+texture = ExtResource( 15 )
+
+[node name="MovementController" type="Node2D" parent="."]
+
+transform/pos = Vector2( 16, 688 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="PlayerTarget" type="Area2D" parent="MovementController"]
+
+transform/pos = Vector2( -8, 0 )
+input/pickable = true
+shapes/0/shape = SubResource( 1 )
+shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
+shapes/0/trigger = false
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Collision" type="CollisionShape2D" parent="MovementController/PlayerTarget"]
+
+shape = SubResource( 1 )
+trigger = false
+_update_shape_index = 0
+
+[node name="ProjectileDetection" type="RayCast2D" parent="MovementController"]
+
+transform/pos = Vector2( 8, 0 )
+enabled = true
+cast_to = Vector2( 0, -16 )
+layer_mask = 1
+type_mask = 16
+
+[node name="LeftDetection" type="RayCast2D" parent="MovementController"]
+
+transform/pos = Vector2( -1, 16 )
+enabled = true
+cast_to = Vector2( -8, 0 )
+layer_mask = 1
+type_mask = 16
+
+[node name="RightDetection" type="RayCast2D" parent="MovementController"]
+
+transform/pos = Vector2( 1, 16 )
+enabled = true
+cast_to = Vector2( 8, 0 )
+layer_mask = 1
+type_mask = 16
+
+[node name="MovementBounds" type="Node2D" parent="."]
+
+editor/display_folded = true
+transform/pos = Vector2( 16, 704 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="OffScreenTarget" type="Area2D" parent="MovementBounds"]
+
+transform/pos = Vector2( -8, 0 )
+input/pickable = true
+shapes/0/shape = SubResource( 1 )
+shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
+shapes/0/trigger = false
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Collision" type="CollisionShape2D" parent="MovementBounds/OffScreenTarget"]
+
+shape = SubResource( 1 )
+trigger = false
+_update_shape_index = 0
+
+[node name="SafeZoneTarget" type="Area2D" parent="MovementBounds"]
+
+transform/pos = Vector2( 24, 0 )
+input/pickable = true
+shapes/0/shape = SubResource( 1 )
+shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
+shapes/0/trigger = false
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Collision" type="CollisionShape2D" parent="MovementBounds/SafeZoneTarget"]
+
+shape = SubResource( 1 )
+trigger = false
+_update_shape_index = 0
+
+[node name="TreasureTarget" type="Area2D" parent="MovementBounds"]
+
+transform/pos = Vector2( 168, 0 )
+input/pickable = true
+shapes/0/shape = SubResource( 1 )
+shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
+shapes/0/trigger = false
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Collision" type="CollisionShape2D" parent="MovementBounds/TreasureTarget"]
+
+shape = SubResource( 1 )
+trigger = false
+_update_shape_index = 0
+
+[connection signal="finished" from="Positions/AnimatedSprite" to="." method="_on_gather_finished"]
+
+[connection signal="finished" from="Treasure/AnimatedSprite" to="." method="_on_return_finished"]
+
+
