@@ -1,0 +1,30 @@
+[gd_scene load_steps=3 format=1]
+
+[ext_resource path="res://Scripts/Castle.gd" type="Script" id=1]
+[ext_resource path="res://Objects/Hud.tscn" type="PackedScene" id=2]
+
+[node name="Castle" type="Node"]
+
+script/script = ExtResource( 1 )
+
+[node name="ProjectileTimer" type="Timer" parent="."]
+
+process_mode = 1
+wait_time = 0.2
+one_shot = false
+autostart = false
+
+[node name="RetryTimer" type="Timer" parent="."]
+
+process_mode = 1
+wait_time = 1.5
+one_shot = true
+autostart = false
+
+[node name="Hud" parent="." instance=ExtResource( 2 )]
+
+[connection signal="timeout" from="ProjectileTimer" to="." method="_on_projectile_timer_timeout"]
+
+[connection signal="timeout" from="RetryTimer" to="." method="_on_retry_timer_timeout"]
+
+

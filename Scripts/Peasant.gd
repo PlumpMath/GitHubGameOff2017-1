@@ -1,6 +1,11 @@
 extends Node
 
 
+# signal inidicating collision with a projectile
+signal collide
+# signal indicating a scoring action was performed
+signal score
+
 # enum for the different player states
 enum mode_type { TRAVEL, GATHER, TREASURE, RETURN }
 
@@ -139,11 +144,11 @@ func move(direction):
 	detector.force_raycast_update()
 	# check if the player moved into a projectile
 	if detector.is_colliding():
-		print("player hit projectile")
+		# emit the collide signal
+		emit_signal("collide")
 
 
 func _on_gather_finished():
-	print("finished gather")
 	# get the animated sprite
 	var anim = position_list.get_child(current_position)
 	# reset to the normal sprite
@@ -152,10 +157,11 @@ func _on_gather_finished():
 	treasure_list.get_child(current_position).show()
 	# update the current mode
 	current_mode = mode_type.TREASURE
+	# emit the score signal
+	emit_signal("score")
 
 
 func _on_return_finished():
-	print("finished return")
 	# get the animated sprite
 	var anim = treasure_list.get_child(current_position)
 	# hide the treasure sprite
@@ -166,4 +172,6 @@ func _on_return_finished():
 	anim.set_frame(0)
 	# update the current mode
 	current_mode = mode_type.TRAVEL
+	# emit the score signal
+	emit_signal("score")
 
