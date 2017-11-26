@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=1]
+[gd_scene load_steps=4 format=1]
 
 [ext_resource path="res://Scripts/Castle.gd" type="Script" id=1]
 [ext_resource path="res://Objects/Hud.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Sprites/map.png" type="Texture" id=3]
 
 [node name="Castle" type="Node"]
 
@@ -22,6 +23,12 @@ one_shot = true
 autostart = false
 
 [node name="Hud" parent="." instance=ExtResource( 2 )]
+
+[node name="Sprite" type="Sprite" parent="."]
+
+visibility/opacity = 0.025
+texture = ExtResource( 3 )
+centered = false
 
 [connection signal="timeout" from="ProjectileTimer" to="." method="_on_projectile_timer_timeout"]
 
