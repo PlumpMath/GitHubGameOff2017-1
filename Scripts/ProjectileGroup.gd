@@ -19,12 +19,7 @@ onready var sprite_list = get_node("Sprites")
 onready var controller = get_node("ProjectileController")
 
 
-func _on_tick(tick_index):
-	# check if the tick index matches this projectile's process index
-	if tick_index != process_index:
-		# don't do anything if they don't match
-		return
-	
+func process_projectile():
 	# check if the index is past the end of the sprite list
 	if projectile_index >= sprite_list.get_child_count():
 		# destroy this node

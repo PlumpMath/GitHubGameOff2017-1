@@ -1,9 +1,6 @@
 extends Node
 
 
-# signal for projectile processing
-signal tick(tick_index)
-
 # the min/max values for generating actions for a given mode
 # these could be changed to alter the dificulty
 const drop_min_action = 1
@@ -29,10 +26,16 @@ var current_mode = mode_type.DROP
 var tick_index = 0
 # factory used to create new projectiles
 var factory
+# the voice id of the score sound effect
+var score_voice = 0
+# flag indicating if the game has ended
+var game_over = false
 
 onready var projectile_timer = get_node("ProjectileTimer")
 onready var retry_timer = get_node("RetryTimer")
 onready var hud = get_node("Hud")
+onready var audio_player = get_node("AudioPlayer")
+onready var projectile_list = get_node("Projectiles")
 
 # scene containing the variuos projectile types
 var projectile_factory = preload("res://Objects/ProjectileFactory.tscn")
@@ -49,6 +52,9 @@ var player_scene = preload("res://Objects/Peasant.tscn")
 func _ready():
 	# make sure the random numbers are always different
 	randomize()
+	
+	# process input
+	set_process_input(true)
 	
 	# start in the drop mode
 	current_mode = mode_type.DROP
@@ -71,11 +77,38 @@ func _ready():
 	projectile_timer.start()
 
 
+func _input(event):
+	# check if the game is not over 
+	if !game_over:
+		# don't process any input
+		return
+	
+	# check if spacebar was pressed
+	if event.is_action_pressed("ui_select"):
+		# reload the game
+		get_tree().reload_current_scene()
+
+
 func _on_projectile_timer_timeout():
 	# increment the tick index
 	tick_index += 1
-	# emit the tick signal with the current index to the projectiles
-	emit_signal("tick", tick_index)
+	
+	# flag indicating if there is a projectile at this index
+	var has_projectile = false
+	
+	# loop through all the projectiles
+	for projectile in projectile_list.get_children():
+		# check if this projectile's index matches the tick's
+		if projectile.process_index == tick_index:
+			# handle the projectile logic
+			projectile.process_projectile()
+			# indicate that there is a projectile for this index
+			has_projectile = true
+	
+	# check if there is a projectile at this index and the score sound isn't playing
+	if has_projectile && !audio_player.is_voice_active(score_voice):
+		# play the drop sound
+		audio_player.play("drop")
 	
 	# check if we've reached the end of the projectiles
 	if tick_index == projectile_columns:
@@ -102,8 +135,13 @@ func _on_collision():
 	# and remove it
 	player.queue_free()
 	
+	# play the die sound
+	audio_player.play("die")
+	
 	# check if the max misses has been reached
 	if hud.miss == miss_max:
+		# update the game over flag
+		game_over = true
 		# end the game
 		return
 	
@@ -113,6 +151,8 @@ func _on_collision():
 
 func _on_score():
 	hud.score += 1
+	# play the score sound and store its id
+	score_voice = audio_player.play("score")
 
 
 # ***************
@@ -173,12 +213,10 @@ func drop_projectile():
 func create_projectile(index):
 	# get the projectile at the specified column
 	var projectile = factory.get_projectile(index)
-	# connect castle's tick signal
-	connect("tick", projectile, "_on_tick")
 	# connect the projectile's collide signal
 	projectile.connect("collide", self, "_on_collision")
 	# add the projectile to the scene
-	add_child(projectile)
+	projectile_list.add_child(projectile)
 
 
 func create_player():

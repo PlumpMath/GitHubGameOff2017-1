@@ -2,7 +2,7 @@
 
 [ext_resource path="res://Scripts/ProjectileFactory.gd" type="Script" id=1]
 [ext_resource path="res://Scripts/ProjectileGroup.gd" type="Script" id=2]
-[ext_resource path="res://Sprites/Projectiles/fireball.png" type="Texture" id=3]
+[ext_resource path="res://Sprites/Projectiles/boulder.png" type="Texture" id=3]
 [ext_resource path="res://Objects/ProjectileController.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Sprites/Projectiles/arrow.png" type="Texture" id=5]
 [ext_resource path="res://Sprites/Projectiles/axe.png" type="Texture" id=6]
@@ -27,40 +27,39 @@ process_index = 1
 
 visibility/visible = false
 transform/pos = Vector2( 567.985, 160.338 )
-transform/rot = -24.0859
-transform/scale = Vector2( 0.5, 0.5 )
+transform/rot = -40.0
+transform/scale = Vector2( 0.75, 0.75 )
 texture = ExtResource( 3 )
 
 [node name="Projectile2" type="Sprite" parent="Group1/Sprites"]
 
 visibility/visible = false
 transform/pos = Vector2( 500.336, 213.053 )
-transform/rot = -9.12336
-transform/scale = Vector2( 0.5, 0.5 )
+transform/rot = -30.0
+transform/scale = Vector2( 0.75, 0.75 )
 texture = ExtResource( 3 )
 
 [node name="Projectile3" type="Sprite" parent="Group1/Sprites"]
 
 visibility/visible = false
-transform/pos = Vector2( 450.704, 291.745 )
-transform/rot = 11.7573
-transform/scale = Vector2( 0.5, 0.5 )
+transform/pos = Vector2( 452.064, 289.025 )
+transform/rot = -20.0
+transform/scale = Vector2( 0.75, 0.75 )
 texture = ExtResource( 3 )
 
 [node name="Projectile4" type="Sprite" parent="Group1/Sprites"]
 
 visibility/visible = false
-transform/pos = Vector2( 415.897, 375.253 )
-transform/rot = 7.98931
-transform/scale = Vector2( 0.5, 0.5 )
+transform/pos = Vector2( 415.897, 372.532 )
+transform/rot = -10.0
+transform/scale = Vector2( 0.75, 0.75 )
 texture = ExtResource( 3 )
 
 [node name="Projectile5" type="Sprite" parent="Group1/Sprites"]
 
 visibility/visible = false
-transform/pos = Vector2( 404.147, 459.3 )
-transform/rot = 22.2278
-transform/scale = Vector2( 0.5, 0.5 )
+transform/pos = Vector2( 402.787, 453.858 )
+transform/scale = Vector2( 0.75, 0.75 )
 texture = ExtResource( 3 )
 
 [node name="ProjectileController" parent="Group1" instance=ExtResource( 4 )]
@@ -132,7 +131,7 @@ process_index = 3
 visibility/visible = false
 transform/pos = Vector2( 883.068, 168.754 )
 transform/rot = -200.153
-transform/scale = Vector2( 0.5, 0.5 )
+transform/scale = Vector2( 0.75, 0.75 )
 texture = ExtResource( 6 )
 
 [node name="Projectile2" type="Sprite" parent="Group3/Sprites"]
@@ -140,7 +139,7 @@ texture = ExtResource( 6 )
 visibility/visible = false
 transform/pos = Vector2( 817.098, 224.882 )
 transform/rot = 239.886
-transform/scale = Vector2( 0.5, 0.5 )
+transform/scale = Vector2( 0.75, 0.75 )
 texture = ExtResource( 6 )
 
 [node name="Projectile3" type="Sprite" parent="Group3/Sprites"]
@@ -148,7 +147,7 @@ texture = ExtResource( 6 )
 visibility/visible = false
 transform/pos = Vector2( 759.408, 299.609 )
 transform/rot = -42.9856
-transform/scale = Vector2( 0.5, 0.5 )
+transform/scale = Vector2( 0.75, 0.75 )
 texture = ExtResource( 6 )
 
 [node name="Projectile4" type="Sprite" parent="Group3/Sprites"]
@@ -156,15 +155,15 @@ texture = ExtResource( 6 )
 visibility/visible = false
 transform/pos = Vector2( 722.563, 383.798 )
 transform/rot = 44.9777
-transform/scale = Vector2( 0.5, 0.5 )
+transform/scale = Vector2( 0.75, 0.75 )
 texture = ExtResource( 6 )
 
 [node name="Projectile5" type="Sprite" parent="Group3/Sprites"]
 
 visibility/visible = false
-transform/pos = Vector2( 710.568, 471.425 )
+transform/pos = Vector2( 711.167, 465.438 )
 transform/rot = 113.157
-transform/scale = Vector2( 0.5, 0.5 )
+transform/scale = Vector2( 0.75, 0.75 )
 texture = ExtResource( 6 )
 
 [node name="ProjectileController" parent="Group3" instance=ExtResource( 4 )]
