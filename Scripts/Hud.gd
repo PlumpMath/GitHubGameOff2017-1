@@ -1,13 +1,26 @@
 extends Control
 
 
+const digit_sprites = [ 
+	preload("res://Sprites/Digits/0.png"),
+	preload("res://Sprites/Digits/1.png"),
+	preload("res://Sprites/Digits/2.png"),
+	preload("res://Sprites/Digits/3.png"),
+	preload("res://Sprites/Digits/4.png"),
+	preload("res://Sprites/Digits/5.png"),
+	preload("res://Sprites/Digits/6.png"),
+	preload("res://Sprites/Digits/7.png"),
+	preload("res://Sprites/Digits/8.png"),
+	preload("res://Sprites/Digits/9.png")
+]
+
 var score setget set_score
 var miss setget set_miss
 
 var miss_sprite = preload("res://Sprites/player_icon.png")
 
 onready var miss_container = get_node("MissContainer")
-onready var score_label = get_node("ScoreLabel")
+onready var score_container = get_node("Score")
 
 
 func _ready():
@@ -17,8 +30,30 @@ func _ready():
 func set_score(value):
 	# set the new score value
 	score = value
-	# display the score
-	score_label.set_text(str(score))
+	
+	# for each digit in the current score display
+	for digit in score_container.get_children():
+		# remove the digit
+		digit.queue_free()
+	
+	# loop through each digit in the score
+	for digit in get_digits(score):
+		# create a new texture frame
+		var texture_frame = TextureFrame.new()
+		# set the sprite to the corresponding digit
+		texture_frame.set_texture(digit_sprites[digit])
+		# add the texture frame to the container
+		score_container.add_child(texture_frame)
+
+
+func get_digits(number):
+	var str_number = str(number)
+	var digits = []
+	
+	for i in range(str_number.length()):
+		digits.append(str_number[i].to_int())
+	
+	return digits
 
 
 func set_miss(value):
