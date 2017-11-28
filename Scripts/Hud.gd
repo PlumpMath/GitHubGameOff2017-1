@@ -17,7 +17,7 @@ const digit_sprites = [
 var score setget set_score
 var miss setget set_miss
 
-var miss_sprite = preload("res://Sprites/player_icon.png")
+var miss_sprite = preload("res://Sprites/Peasant/miss_icon.png")
 
 onready var miss_container = get_node("MissContainer")
 onready var score_container = get_node("Score")
