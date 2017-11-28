@@ -31,11 +31,13 @@ var score_voice = 0
 # flag indicating if the game has ended
 var game_over = false
 
+# frequently used nodes
 onready var projectile_timer = get_node("ProjectileTimer")
 onready var retry_timer = get_node("RetryTimer")
 onready var hud = get_node("Hud")
 onready var audio_player = get_node("AudioPlayer")
 onready var projectile_list = get_node("Projectiles")
+onready var player_miss = get_node("PlayerMiss")
 
 # scene containing the variuos projectile types
 var projectile_factory = preload("res://Objects/ProjectileFactory.tscn")
@@ -121,6 +123,8 @@ func _on_projectile_timer_timeout():
 func _on_retry_timer_timeout():
 	# restart the projectile timer
 	projectile_timer.start()
+	# hide the player miss sprite
+	player_miss.hide()
 	# create a new player
 	create_player()
 
@@ -137,6 +141,9 @@ func _on_collision():
 	
 	# play the die sound
 	audio_player.play("die")
+	
+	# show the player miss sprite
+	player_miss.show()
 	
 	# check if the max misses has been reached
 	if hud.miss == miss_max:

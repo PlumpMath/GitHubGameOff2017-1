@@ -91,6 +91,8 @@ animation = "default"
 
 [node name="Treasure" type="Node" parent="."]
 
+editor/display_folded = true
+
 [node name="AnimatedSprite" type="AnimatedSprite" parent="Treasure"]
 
 visibility/visible = false
