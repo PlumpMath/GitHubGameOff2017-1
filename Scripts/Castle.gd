@@ -1,12 +1,7 @@
 extends Node
 
 
-# the min/max values for generating actions for a given mode
-# these could be changed to alter the dificulty
-const drop_min_action = 1
-const drop_max_action = 3
-const rest_min_action = 1
-const rest_max_action = 2
+
 # 1/x chance of two projectiles being created in one round
 const multiple_projectile_chance = 4
 # the maximum number of misses allowed
@@ -20,6 +15,12 @@ enum mode_type { DROP = -1, REST = 1 }
 # the number of actions to take before switching modes
 # an action occurs when all the projectile columns have been processed
 var action_count = 0
+# the min/max values for generating actions for a given mode
+# these could be changed to alter the dificulty
+var drop_min_action = 1
+var drop_max_action = 3
+var rest_min_action = 1
+var rest_max_action = 2
 # tracks the current game mode; dropping projectiles or not
 var current_mode = mode_type.DROP
 # the tick index of the current round
@@ -157,9 +158,33 @@ func _on_collision():
 
 
 func _on_score():
-	hud.score += 1
 	# play the score sound and store its id
 	score_voice = audio_player.play("score")
+	# increase the score by 1
+	hud.score += 1
+	# store the current score
+	var current_score = hud.score
+	# check if the current score is a multiple of 100 and there is a miss
+	if current_score % 100 == 0 && hud.miss > 0:
+		# decrease the misses by 1
+		hud.miss -= 1
+	
+	# check if the current score is a multiple of 50
+	if current_score % 50 == 0:
+		# increase the minimum drop count range by one
+		drop_min_action += 1
+		# increase the wait time between rounds
+		projectile_timer.set_wait_time(projectile_timer.get_wait_time() + 0.08)
+	#check if current score is a multiple of 25
+	elif current_score % 25 == 0:
+		# increase the maximum drop count range by one
+		drop_max_action += 1
+		# increase the wait time between rounds
+		projectile_timer.set_wait_time(projectile_timer.get_wait_time() + 0.08)
+	#check if current score is a multiple of 5
+	elif current_score % 5 == 0:
+		# decrease the wait time between rounds
+		projectile_timer.set_wait_time(projectile_timer.get_wait_time() - 0.02)
 
 
 # ***************
