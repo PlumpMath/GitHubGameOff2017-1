@@ -1,7 +1,6 @@
 extends Node
 
 
-
 # 1/x chance of two projectiles being created in one round
 const multiple_projectile_chance = 4
 # the maximum number of misses allowed
@@ -30,7 +29,7 @@ var factory
 # the voice id of the score sound effect
 var score_voice = 0
 # flag indicating if the game has ended
-var game_over = false
+var game_over = true
 
 # frequently used nodes
 onready var projectile_timer = get_node("ProjectileTimer")
@@ -39,6 +38,7 @@ onready var hud = get_node("Hud")
 onready var audio_player = get_node("AudioPlayer")
 onready var projectile_list = get_node("Projectiles")
 onready var player_miss = get_node("PlayerMiss")
+onready var title_screen = get_node("TitleScreen")
 
 # scene containing the variuos projectile types
 var projectile_factory = preload("res://Objects/ProjectileFactory.tscn")
@@ -59,25 +59,9 @@ func _ready():
 	# process input
 	set_process_input(true)
 	
-	# start in the drop mode
-	current_mode = mode_type.DROP
-	
 	# create the projectile factory
 	factory = projectile_factory.instance()
-	
-	# initialize the score
-	hud.score = 0
-	
-	# generate a random number of actions to take based on the current mode
-	action_count = generate_action_count(current_mode)
-	# start the game having taken an action
-	take_action()
-	
-	# create the player
-	create_player()
-	
-	# start the projectile timer
-	projectile_timer.start()
+
 
 
 func _input(event):
@@ -88,8 +72,8 @@ func _input(event):
 	
 	# check if spacebar was pressed
 	if event.is_action_pressed("ui_select"):
-		# reload the game
-		get_tree().reload_current_scene()
+		# start the game
+		start_game()
 
 
 func _on_projectile_timer_timeout():
@@ -122,10 +106,16 @@ func _on_projectile_timer_timeout():
 
 
 func _on_retry_timer_timeout():
-	# restart the projectile timer
-	projectile_timer.start()
 	# hide the player miss sprite
 	player_miss.hide()
+	
+	# check if the max misses has been reached
+	if hud.miss == miss_max:
+		end_game()
+		return
+	
+	# restart the projectile timer
+	projectile_timer.start()
 	# create a new player
 	create_player()
 
@@ -145,13 +135,6 @@ func _on_collision():
 	
 	# show the player miss sprite
 	player_miss.show()
-	
-	# check if the max misses has been reached
-	if hud.miss == miss_max:
-		# update the game over flag
-		game_over = true
-		# end the game
-		return
 	
 	# start the retry timer
 	retry_timer.start()
@@ -202,6 +185,55 @@ func rand_int_range(min_range, max_range):
 # ACTION FUNCTIONS
 # functions controlling the game play
 # ***************
+
+func initialize_variables():
+	# start the game
+	game_over = false
+	# start in the drop mode
+	current_mode = mode_type.DROP
+	# reset the tick count
+	var tick_index = 0
+	# initialize the hud
+	hud.score = 0
+	hud.miss = 0
+	# set the initial the min/max values for generating actions for a given mode
+	drop_min_action = 1
+	drop_max_action = 3
+	rest_min_action = 1
+	rest_max_action = 2
+	# reset the projectile timer
+	projectile_timer.set_wait_time(0.2)
+
+
+func start_game():
+	# setup all the variable for the game start
+	initialize_variables()
+	# hide the title and player miss sprite
+	title_screen.hide()
+	player_miss.hide()
+	
+	# generate a random number of actions to take based on the current mode
+	action_count = generate_action_count(current_mode)
+	# start the game having taken an action
+	take_action()
+	
+	# create the player
+	create_player()
+	
+	# start the projectile timer
+	projectile_timer.start()
+
+
+func end_game():
+	# update the game over flag
+	game_over = true
+	# show the title screen
+	title_screen.show()
+	# loop through the list of projectiles
+	for projectile in projectile_list.get_children():
+		# delete the projectile
+		projectile.queue_free()
+
 
 func generate_action_count(mode):
 	if mode == mode_type.DROP:
