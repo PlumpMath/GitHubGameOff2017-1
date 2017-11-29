@@ -23,9 +23,11 @@ onready var miss_container = get_node("MissContainer")
 onready var score_container = get_node("Score")
 
 
-func _ready():
-	miss = 0
 
+# ***************
+# SET FUNCTIONS
+# functions to set values
+# ***************
 
 func set_score(value):
 	# set the new score value
@@ -38,22 +40,10 @@ func set_score(value):
 	
 	# loop through each digit in the score
 	for digit in get_digits(score):
-		# create a new texture frame
-		var texture_frame = TextureFrame.new()
-		# set the sprite to the corresponding digit
-		texture_frame.set_texture(digit_sprites[digit])
-		# add the texture frame to the container
-		score_container.add_child(texture_frame)
-
-
-func get_digits(number):
-	var str_number = str(number)
-	var digits = []
-	
-	for i in range(str_number.length()):
-		digits.append(str_number[i].to_int())
-	
-	return digits
+		# create a new digit node
+		var digit_icon = create_digit(digit)
+		# add the node to the container
+		score_container.add_child(digit_icon)
 
 
 func set_miss(value):
@@ -71,11 +61,72 @@ func set_miss(value):
 	
 	# add any miss icons to match the miss count
 	while miss_container.get_child_count() < miss:
-		# create a new texture frame node
-		var miss_icon = TextureFrame.new()
-		# set the texture to the miss sprite
-		miss_icon.set_texture(miss_sprite)
+		# create a new icon node
+		var miss_icon = create_icon()
 		# add the node to the container
 		miss_container.add_child(miss_icon)
 		# HBoxContainer will handle spacing the nodes in the container
+
+
+
+# ***************
+# HELPER FUNCTIONS
+# ***************
+
+func get_digits(number):
+	var str_number = str(number)
+	var digits = []
+	
+	for i in range(str_number.length()):
+		digits.append(str_number[i].to_int())
+	
+	return digits
+
+
+
+# ***************
+# CREATION FUNCTIONS
+# Create images to display in the hud
+# ***************
+
+func create_digit(digit):
+	# create a new texture frame
+	var texture_frame = TextureFrame.new()
+	# set the sprite to the corresponding digit
+	texture_frame.set_texture(digit_sprites[digit])
+	# create a new sprite node
+	var shadow = Sprite.new()
+	# set the texture to the corresponding digit
+	shadow.set_texture(digit_sprites[digit])
+	# don't center the sprite
+	shadow.set_centered(false)
+	# set the shadow position
+	shadow.set_pos(Vector2(2, 2))
+	# set the shadow opacity
+	shadow.set_opacity(0.3)
+	# add the shadow to the icon
+	texture_frame.add_child(shadow)
+	# return the digit node
+	return texture_frame
+
+
+func create_icon():
+	# create a new texture frame node
+	var miss_icon = TextureFrame.new()
+	# set the texture to the miss sprite
+	miss_icon.set_texture(miss_sprite)
+	# create a new sprite node
+	var shadow = Sprite.new()
+	# set the texture to the miss sprite
+	shadow.set_texture(miss_sprite)
+	# don't center the sprite
+	shadow.set_centered(false)
+	# set the shadow position
+	shadow.set_pos(Vector2(2, 2))
+	# set the shadow opacity
+	shadow.set_opacity(0.3)
+	# add the shadow to the icon
+	miss_icon.add_child(shadow)
+	# return the icon node
+	return miss_icon
 

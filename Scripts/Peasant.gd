@@ -69,6 +69,8 @@ func _input(event):
 			anim.stop()
 			# reset to the normal sprite
 			anim.set_animation("default")
+			# and the shadow
+			anim.get_child(0).set_animation("default")
 			# reset mode to travel
 			current_mode = mode_type.TRAVEL
 		
@@ -100,6 +102,8 @@ func _input(event):
 				var anim = position_list.get_child(current_position)
 				# play the gather animation
 				anim.play("gather")
+				# and the shadow animation
+				anim.get_child(0).play("gather")
 				# return without moving
 				return
 			# end if detector.is_colliding()
@@ -128,8 +132,12 @@ func move(direction):
 		
 		# check if the player is returning the treasure
 		if current_mode == mode_type.RETURN:
+			# get the animated sprite
+			var anim = treasure_list.get_child(new_position)
 			# play the return animation
-			treasure_list.get_child(new_position).play("default")
+			anim.play("return")
+			# and the shadow
+			anim.get_child(0).play("return")
 	
 	# update the current position to the new index
 	current_position = new_position
@@ -153,6 +161,8 @@ func _on_gather_finished():
 	var anim = position_list.get_child(current_position)
 	# reset to the normal sprite
 	anim.set_animation("default")
+	# and the shadow
+	anim.get_child(0).set_animation("default")
 	# show the treasure sprite
 	treasure_list.get_child(current_position).show()
 	# update the current mode
@@ -166,10 +176,10 @@ func _on_return_finished():
 	var anim = treasure_list.get_child(current_position)
 	# hide the treasure sprite
 	anim.hide()
-	# stop the animation
-	anim.stop()
 	# reset the animation
-	anim.set_frame(0)
+	anim.play("default")
+	# and the shadow
+	anim.get_child(0).play("default")
 	# update the current mode
 	current_mode = mode_type.TRAVEL
 	# emit the score signal

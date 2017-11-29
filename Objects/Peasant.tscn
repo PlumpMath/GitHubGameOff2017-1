@@ -33,9 +33,14 @@ animations = [ {
 [sub_resource type="SpriteFrames" id=2]
 
 animations = [ {
-"frames": [ ExtResource( 8 ), ExtResource( 9 ), ExtResource( 10 ), ExtResource( 10 ) ],
+"frames": [ ExtResource( 8 ) ],
 "loop": false,
 "name": "default",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 8 ), ExtResource( 9 ), ExtResource( 10 ), ExtResource( 10 ) ],
+"loop": false,
+"name": "return",
 "speed": 6.0
 } ]
 
@@ -56,10 +61,22 @@ visibility/visible = false
 transform/pos = Vector2( 240, 560 )
 texture = ExtResource( 2 )
 
+[node name="Shadow" type="Sprite" parent="Positions/Sprite"]
+
+visibility/opacity = 0.5
+transform/pos = Vector2( 2, 2 )
+texture = ExtResource( 2 )
+
 [node name="Sprite1" type="Sprite" parent="Positions"]
 
 visibility/visible = false
 transform/pos = Vector2( 400, 560 )
+texture = ExtResource( 3 )
+
+[node name="Shadow" type="Sprite" parent="Positions/Sprite1"]
+
+visibility/opacity = 0.3
+transform/pos = Vector2( 2, 2 )
 texture = ExtResource( 3 )
 
 [node name="Sprite2" type="Sprite" parent="Positions"]
@@ -68,10 +85,23 @@ visibility/visible = false
 transform/pos = Vector2( 560, 560 )
 texture = ExtResource( 4 )
 
+[node name="Shadow" type="Sprite" parent="Positions/Sprite2"]
+
+visibility/opacity = 0.3
+transform/pos = Vector2( 2, 2 )
+texture = ExtResource( 4 )
+
 [node name="Sprite3" type="Sprite" parent="Positions"]
 
 visibility/visible = false
 transform/pos = Vector2( 720, 560 )
+texture = ExtResource( 2 )
+flip_h = true
+
+[node name="Shadow" type="Sprite" parent="Positions/Sprite3"]
+
+visibility/opacity = 0.3
+transform/pos = Vector2( 2, 2 )
 texture = ExtResource( 2 )
 flip_h = true
 
@@ -82,6 +112,13 @@ transform/pos = Vector2( 880, 560 )
 texture = ExtResource( 3 )
 flip_h = true
 
+[node name="Shadow" type="Sprite" parent="Positions/Sprite4"]
+
+visibility/opacity = 0.3
+transform/pos = Vector2( 2, 2 )
+texture = ExtResource( 3 )
+flip_h = true
+
 [node name="AnimatedSprite" type="AnimatedSprite" parent="Positions"]
 
 visibility/visible = false
@@ -89,21 +126,39 @@ transform/pos = Vector2( 1040, 560 )
 frames = SubResource( 1 )
 animation = "default"
 
-[node name="Treasure" type="Node" parent="."]
+[node name="Shadow" type="AnimatedSprite" parent="Positions/AnimatedSprite"]
 
-editor/display_folded = true
+visibility/opacity = 0.3
+transform/pos = Vector2( 2, 2 )
+frames = SubResource( 1 )
+animation = "default"
+
+[node name="Treasure" type="Node" parent="."]
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="Treasure"]
 
 visibility/visible = false
 transform/pos = Vector2( 132.653, 560.389 )
 frames = SubResource( 2 )
-animation = "default"
+animation = "return"
+
+[node name="Shadow" type="AnimatedSprite" parent="Treasure/AnimatedSprite"]
+
+visibility/opacity = 0.3
+transform/pos = Vector2( 2, 2 )
+frames = SubResource( 2 )
+animation = "return"
 
 [node name="Sprite" type="Sprite" parent="Treasure"]
 
 visibility/visible = false
 transform/pos = Vector2( 454.702, 592.772 )
+texture = ExtResource( 11 )
+
+[node name="Shadow" type="Sprite" parent="Treasure/Sprite"]
+
+visibility/opacity = 0.3
+transform/pos = Vector2( 2, 2 )
 texture = ExtResource( 11 )
 
 [node name="Sprite1" type="Sprite" parent="Treasure"]
@@ -112,10 +167,22 @@ visibility/visible = false
 transform/pos = Vector2( 611.177, 596.943 )
 texture = ExtResource( 12 )
 
+[node name="Shadow" type="Sprite" parent="Treasure/Sprite1"]
+
+visibility/opacity = 0.3
+transform/pos = Vector2( 2, 2 )
+texture = ExtResource( 12 )
+
 [node name="Sprite2" type="Sprite" parent="Treasure"]
 
 visibility/visible = false
 transform/pos = Vector2( 754.175, 555.427 )
+texture = ExtResource( 13 )
+
+[node name="Shadow" type="Sprite" parent="Treasure/Sprite2"]
+
+visibility/opacity = 0.3
+transform/pos = Vector2( 2, 2 )
 texture = ExtResource( 13 )
 
 [node name="Sprite3" type="Sprite" parent="Treasure"]
@@ -124,10 +191,22 @@ visibility/visible = false
 transform/pos = Vector2( 921.094, 569.207 )
 texture = ExtResource( 14 )
 
+[node name="Shadow" type="Sprite" parent="Treasure/Sprite3"]
+
+visibility/opacity = 0.3
+transform/pos = Vector2( 2, 2 )
+texture = ExtResource( 14 )
+
 [node name="Sprite4" type="Sprite" parent="Treasure"]
 
 visibility/visible = false
 transform/pos = Vector2( 981.992, 576.362 )
+texture = ExtResource( 15 )
+
+[node name="Shadow" type="Sprite" parent="Treasure/Sprite4"]
+
+visibility/opacity = 0.3
+transform/pos = Vector2( 2, 2 )
 texture = ExtResource( 15 )
 
 [node name="MovementController" type="Node2D" parent="."]

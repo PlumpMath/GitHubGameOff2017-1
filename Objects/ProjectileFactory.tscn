@@ -23,42 +23,96 @@ process_index = 1
 
 [node name="Sprites" type="Node" parent="Group1"]
 
-[node name="Projectile1" type="Sprite" parent="Group1/Sprites"]
+[node name="Projectile1" type="Node2D" parent="Group1/Sprites"]
 
 visibility/visible = false
 transform/pos = Vector2( 567.985, 160.338 )
+
+[node name="Shadow" type="Sprite" parent="Group1/Sprites/Projectile1"]
+
+visibility/opacity = 0.3
+transform/pos = Vector2( 2, 2 )
 transform/rot = -40.0
 transform/scale = Vector2( 0.75, 0.75 )
 texture = ExtResource( 3 )
 
-[node name="Projectile2" type="Sprite" parent="Group1/Sprites"]
+[node name="Projectile" type="Sprite" parent="Group1/Sprites/Projectile1"]
+
+transform/rot = -40.0
+transform/scale = Vector2( 0.75, 0.75 )
+texture = ExtResource( 3 )
+
+[node name="Projectile2" type="Node2D" parent="Group1/Sprites"]
 
 visibility/visible = false
 transform/pos = Vector2( 500.336, 213.053 )
+
+[node name="Shadow" type="Sprite" parent="Group1/Sprites/Projectile2"]
+
+visibility/opacity = 0.3
+transform/pos = Vector2( 2, 2 )
 transform/rot = -30.0
 transform/scale = Vector2( 0.75, 0.75 )
 texture = ExtResource( 3 )
 
-[node name="Projectile3" type="Sprite" parent="Group1/Sprites"]
+[node name="Projectile" type="Sprite" parent="Group1/Sprites/Projectile2"]
+
+transform/rot = -30.0
+transform/scale = Vector2( 0.75, 0.75 )
+texture = ExtResource( 3 )
+
+[node name="Projectile3" type="Node2D" parent="Group1/Sprites"]
 
 visibility/visible = false
 transform/pos = Vector2( 452.064, 289.025 )
+
+[node name="Shadow" type="Sprite" parent="Group1/Sprites/Projectile3"]
+
+visibility/opacity = 0.3
+transform/pos = Vector2( 2, 2 )
 transform/rot = -20.0
 transform/scale = Vector2( 0.75, 0.75 )
 texture = ExtResource( 3 )
 
-[node name="Projectile4" type="Sprite" parent="Group1/Sprites"]
+[node name="Projectile" type="Sprite" parent="Group1/Sprites/Projectile3"]
+
+transform/rot = -20.0
+transform/scale = Vector2( 0.75, 0.75 )
+texture = ExtResource( 3 )
+
+[node name="Projectile4" type="Node2D" parent="Group1/Sprites"]
 
 visibility/visible = false
 transform/pos = Vector2( 415.897, 372.532 )
+
+[node name="Shadow" type="Sprite" parent="Group1/Sprites/Projectile4"]
+
+visibility/opacity = 0.3
+transform/pos = Vector2( 2, 2 )
 transform/rot = -10.0
 transform/scale = Vector2( 0.75, 0.75 )
 texture = ExtResource( 3 )
 
-[node name="Projectile5" type="Sprite" parent="Group1/Sprites"]
+[node name="Projectile" type="Sprite" parent="Group1/Sprites/Projectile4"]
+
+transform/rot = -10.0
+transform/scale = Vector2( 0.75, 0.75 )
+texture = ExtResource( 3 )
+
+[node name="Projectile5" type="Node2D" parent="Group1/Sprites"]
 
 visibility/visible = false
 transform/pos = Vector2( 402.787, 453.858 )
+
+[node name="Shadow" type="Sprite" parent="Group1/Sprites/Projectile5"]
+
+visibility/opacity = 0.3
+transform/pos = Vector2( 2, 2 )
+transform/scale = Vector2( 0.75, 0.75 )
+texture = ExtResource( 3 )
+
+[node name="Projectile" type="Sprite" parent="Group1/Sprites/Projectile5"]
+
 transform/scale = Vector2( 0.75, 0.75 )
 texture = ExtResource( 3 )
 
@@ -74,43 +128,98 @@ process_index = 2
 
 [node name="Sprites" type="Node" parent="Group2"]
 
-[node name="Projectile1" type="Sprite" parent="Group2/Sprites"]
+[node name="Projectile1" type="Node2D" parent="Group2/Sprites"]
 
 visibility/visible = false
 transform/pos = Vector2( 721.594, 167.733 )
-transform/rot = 31.5323
+
+[node name="Projectile" type="Sprite" parent="Group2/Sprites/Projectile1"]
+
+transform/rot = 31.5
 transform/scale = Vector2( 0.5, 0.5 )
 texture = ExtResource( 5 )
 
-[node name="Projectile2" type="Sprite" parent="Group2/Sprites"]
+[node name="Shadow" type="Sprite" parent="Group2/Sprites/Projectile1"]
+
+visibility/opacity = 0.3
+transform/pos = Vector2( 2, 2 )
+transform/rot = 31.5
+transform/scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 5 )
+
+[node name="Projectile2" type="Node2D" parent="Group2/Sprites"]
 
 visibility/visible = false
 transform/pos = Vector2( 649.752, 228.706 )
-transform/rot = 50.5021
+
+[node name="Projectile" type="Sprite" parent="Group2/Sprites/Projectile2"]
+
+transform/rot = 50.5
 transform/scale = Vector2( 0.5, 0.5 )
 texture = ExtResource( 5 )
 
-[node name="Projectile3" type="Sprite" parent="Group2/Sprites"]
+[node name="Shadow" type="Sprite" parent="Group2/Sprites/Projectile2"]
+
+visibility/opacity = 0.3
+transform/pos = Vector2( 2, 2 )
+transform/rot = 50.5
+transform/scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 5 )
+
+[node name="Projectile3" type="Node2D" parent="Group2/Sprites"]
 
 visibility/visible = false
 transform/pos = Vector2( 600.407, 302.141 )
-transform/rot = -299.969
+
+[node name="Projectile" type="Sprite" parent="Group2/Sprites/Projectile3"]
+
+transform/rot = 60.0
 transform/scale = Vector2( 0.5, 0.5 )
 texture = ExtResource( 5 )
 
-[node name="Projectile4" type="Sprite" parent="Group2/Sprites"]
+[node name="Shadow" type="Sprite" parent="Group2/Sprites/Projectile3"]
+
+visibility/opacity = 0.3
+transform/pos = Vector2( 2, 2 )
+transform/rot = 60.0
+transform/scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 5 )
+
+[node name="Projectile4" type="Node2D" parent="Group2/Sprites"]
 
 visibility/visible = false
 transform/pos = Vector2( 572.088, 377.846 )
-transform/rot = 74.0114
+
+[node name="Projectile" type="Sprite" parent="Group2/Sprites/Projectile4"]
+
+transform/rot = 74.0
 transform/scale = Vector2( 0.5, 0.5 )
 texture = ExtResource( 5 )
 
-[node name="Projectile5" type="Sprite" parent="Group2/Sprites"]
+[node name="Shadow" type="Sprite" parent="Group2/Sprites/Projectile4"]
+
+visibility/opacity = 0.3
+transform/pos = Vector2( 2, 2 )
+transform/rot = 74.0
+transform/scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 5 )
+
+[node name="Projectile5" type="Node2D" parent="Group2/Sprites"]
 
 visibility/visible = false
 transform/pos = Vector2( 561.431, 457.655 )
-transform/rot = 88.5051
+
+[node name="Projectile" type="Sprite" parent="Group2/Sprites/Projectile5"]
+
+transform/rot = 88.5
+transform/scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 5 )
+
+[node name="Shadow" type="Sprite" parent="Group2/Sprites/Projectile5"]
+
+visibility/opacity = 0.3
+transform/pos = Vector2( 2, 2 )
+transform/rot = 88.5
 transform/scale = Vector2( 0.5, 0.5 )
 texture = ExtResource( 5 )
 
@@ -126,43 +235,98 @@ process_index = 3
 
 [node name="Sprites" type="Node" parent="Group3"]
 
-[node name="Projectile1" type="Sprite" parent="Group3/Sprites"]
+[node name="Projectile1" type="Node2D" parent="Group3/Sprites"]
 
 visibility/visible = false
 transform/pos = Vector2( 883.068, 168.754 )
-transform/rot = -200.153
+
+[node name="Projectile" type="Sprite" parent="Group3/Sprites/Projectile1"]
+
+transform/rot = 159.8
 transform/scale = Vector2( 0.75, 0.75 )
 texture = ExtResource( 6 )
 
-[node name="Projectile2" type="Sprite" parent="Group3/Sprites"]
+[node name="Shadow" type="Sprite" parent="Group3/Sprites/Projectile1"]
+
+visibility/opacity = 0.3
+transform/pos = Vector2( 2, 2 )
+transform/rot = 159.8
+transform/scale = Vector2( 0.75, 0.75 )
+texture = ExtResource( 6 )
+
+[node name="Projectile2" type="Node2D" parent="Group3/Sprites"]
 
 visibility/visible = false
 transform/pos = Vector2( 817.098, 224.882 )
-transform/rot = 239.886
+
+[node name="Projectile" type="Sprite" parent="Group3/Sprites/Projectile2"]
+
+transform/rot = -120.1
 transform/scale = Vector2( 0.75, 0.75 )
 texture = ExtResource( 6 )
 
-[node name="Projectile3" type="Sprite" parent="Group3/Sprites"]
+[node name="Shadow" type="Sprite" parent="Group3/Sprites/Projectile2"]
+
+visibility/opacity = 0.3
+transform/pos = Vector2( 2, 2 )
+transform/rot = -120.1
+transform/scale = Vector2( 0.75, 0.75 )
+texture = ExtResource( 6 )
+
+[node name="Projectile3" type="Node2D" parent="Group3/Sprites"]
 
 visibility/visible = false
 transform/pos = Vector2( 759.408, 299.609 )
-transform/rot = -42.9856
+
+[node name="Projectile" type="Sprite" parent="Group3/Sprites/Projectile3"]
+
+transform/rot = -43.0
 transform/scale = Vector2( 0.75, 0.75 )
 texture = ExtResource( 6 )
 
-[node name="Projectile4" type="Sprite" parent="Group3/Sprites"]
+[node name="Shadow" type="Sprite" parent="Group3/Sprites/Projectile3"]
+
+visibility/opacity = 0.3
+transform/pos = Vector2( 2, 2 )
+transform/rot = -43.0
+transform/scale = Vector2( 0.75, 0.75 )
+texture = ExtResource( 6 )
+
+[node name="Projectile4" type="Node2D" parent="Group3/Sprites"]
 
 visibility/visible = false
 transform/pos = Vector2( 722.563, 383.798 )
-transform/rot = 44.9777
+
+[node name="Projectile" type="Sprite" parent="Group3/Sprites/Projectile4"]
+
+transform/rot = 45.0
 transform/scale = Vector2( 0.75, 0.75 )
 texture = ExtResource( 6 )
 
-[node name="Projectile5" type="Sprite" parent="Group3/Sprites"]
+[node name="Shadow" type="Sprite" parent="Group3/Sprites/Projectile4"]
+
+visibility/opacity = 0.3
+transform/pos = Vector2( 2, 2 )
+transform/rot = 45.0
+transform/scale = Vector2( 0.75, 0.75 )
+texture = ExtResource( 6 )
+
+[node name="Projectile5" type="Node2D" parent="Group3/Sprites"]
 
 visibility/visible = false
 transform/pos = Vector2( 711.167, 465.438 )
-transform/rot = 113.157
+
+[node name="Projectile" type="Sprite" parent="Group3/Sprites/Projectile5"]
+
+transform/rot = 113.2
+transform/scale = Vector2( 0.75, 0.75 )
+texture = ExtResource( 6 )
+
+[node name="Shadow" type="Sprite" parent="Group3/Sprites/Projectile5"]
+
+visibility/opacity = 0.3
+transform/pos = Vector2( 2, 2 )
+transform/rot = 113.2
 transform/scale = Vector2( 0.75, 0.75 )
 texture = ExtResource( 6 )
 
@@ -172,49 +336,103 @@ transform/pos = Vector2( 112, 592 )
 
 [node name="Group4" type="Node" parent="."]
 
-editor/display_folded = true
 script/script = ExtResource( 2 )
 process_index = 4
 
 [node name="Sprites" type="Node" parent="Group4"]
 
-[node name="Projectile1" type="Sprite" parent="Group4/Sprites"]
+[node name="Projectile1" type="Node2D" parent="Group4/Sprites"]
 
 visibility/visible = false
 transform/pos = Vector2( 1053.11, 159.358 )
-transform/rot = -188.052
+
+[node name="Projectile" type="Sprite" parent="Group4/Sprites/Projectile1"]
+
+transform/rot = 171.9
 transform/scale = Vector2( 0.5, 0.5 )
 texture = ExtResource( 7 )
 
-[node name="Projectile2" type="Sprite" parent="Group4/Sprites"]
+[node name="Shadow" type="Sprite" parent="Group4/Sprites/Projectile1"]
+
+visibility/opacity = 0.3
+transform/pos = Vector2( 2, 2 )
+transform/rot = 171.9
+transform/scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 7 )
+
+[node name="Projectile2" type="Node2D" parent="Group4/Sprites"]
 
 visibility/visible = false
 transform/pos = Vector2( 976.659, 215.131 )
-transform/rot = 124.843
+
+[node name="Projectile" type="Sprite" parent="Group4/Sprites/Projectile2"]
+
+transform/rot = 124.8
 transform/scale = Vector2( 0.5, 0.5 )
 texture = ExtResource( 7 )
 
-[node name="Projectile3" type="Sprite" parent="Group4/Sprites"]
+[node name="Shadow" type="Sprite" parent="Group4/Sprites/Projectile2"]
+
+visibility/opacity = 0.3
+transform/pos = Vector2( 2, 2 )
+transform/rot = 124.8
+transform/scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 7 )
+
+[node name="Projectile3" type="Node2D" parent="Group4/Sprites"]
 
 visibility/visible = false
 transform/pos = Vector2( 922.365, 294.705 )
+
+[node name="Projectile" type="Sprite" parent="Group4/Sprites/Projectile3"]
+
 transform/rot = 72.8
 transform/scale = Vector2( 0.5, 0.5 )
 texture = ExtResource( 7 )
 
-[node name="Projectile4" type="Sprite" parent="Group4/Sprites"]
+[node name="Shadow" type="Sprite" parent="Group4/Sprites/Projectile3"]
 
-visibility/visible = false
-transform/pos = Vector2( 895.56, 384.465 )
-transform/rot = 21.955
+visibility/opacity = 0.3
+transform/pos = Vector2( 2, 2 )
+transform/rot = 72.8
 transform/scale = Vector2( 0.5, 0.5 )
 texture = ExtResource( 7 )
 
-[node name="Projectile5" type="Sprite" parent="Group4/Sprites"]
+[node name="Projectile4" type="Node2D" parent="Group4/Sprites"]
+
+visibility/visible = false
+transform/pos = Vector2( 895.56, 384.465 )
+
+[node name="Projectile" type="Sprite" parent="Group4/Sprites/Projectile4"]
+
+transform/rot = 22.0
+transform/scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 7 )
+
+[node name="Shadow" type="Sprite" parent="Group4/Sprites/Projectile4"]
+
+visibility/opacity = 0.3
+transform/pos = Vector2( 2, 2 )
+transform/rot = 22.0
+transform/scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 7 )
+
+[node name="Projectile5" type="Node2D" parent="Group4/Sprites"]
 
 visibility/visible = false
 transform/pos = Vector2( 881.486, 470.856 )
-transform/rot = -24.1868
+
+[node name="Projectile" type="Sprite" parent="Group4/Sprites/Projectile5"]
+
+transform/rot = -24.2
+transform/scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 7 )
+
+[node name="Shadow" type="Sprite" parent="Group4/Sprites/Projectile5"]
+
+visibility/opacity = 0.3
+transform/pos = Vector2( 2, 2 )
+transform/rot = -24.2
 transform/scale = Vector2( 0.5, 0.5 )
 texture = ExtResource( 7 )
 
@@ -236,16 +454,34 @@ visibility/visible = false
 transform/pos = Vector2( 1123.64, 341.383 )
 texture = ExtResource( 8 )
 
+[node name="Shadow" type="Sprite" parent="Group5/Sprites/Projectile1"]
+
+visibility/opacity = 0.3
+transform/pos = Vector2( 2, 2 )
+texture = ExtResource( 8 )
+
 [node name="Projectile2" type="Sprite" parent="Group5/Sprites"]
 
 visibility/visible = false
 transform/pos = Vector2( 1068.61, 412.12 )
 texture = ExtResource( 9 )
 
+[node name="Projectile4" type="Sprite" parent="Group5/Sprites/Projectile2"]
+
+visibility/opacity = 0.3
+transform/pos = Vector2( 2, 2 )
+texture = ExtResource( 9 )
+
 [node name="Projectile3" type="Sprite" parent="Group5/Sprites"]
 
 visibility/visible = false
 transform/pos = Vector2( 1053.07, 486.027 )
+texture = ExtResource( 10 )
+
+[node name="Projectile4" type="Sprite" parent="Group5/Sprites/Projectile3"]
+
+visibility/opacity = 0.3
+transform/pos = Vector2( 2, 2 )
 texture = ExtResource( 10 )
 
 [node name="ProjectileController" parent="Group5" instance=ExtResource( 4 )]
