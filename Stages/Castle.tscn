@@ -102,6 +102,7 @@ default/chorus_send = 0.0
 
 [node name="PlayerMiss" type="Sprite" parent="."]
 
+visibility/visible = false
 transform/pos = Vector2( 641.847, 663.564 )
 texture = ExtResource( 10 )
 
