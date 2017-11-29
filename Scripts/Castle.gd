@@ -26,8 +26,6 @@ var current_mode = mode_type.DROP
 var tick_index = 0
 # factory used to create new projectiles
 var factory
-# the voice id of the score sound effect
-var score_voice = 0
 # flag indicating if the game has ended
 var game_over = true
 
@@ -35,7 +33,9 @@ var game_over = true
 onready var projectile_timer = get_node("ProjectileTimer")
 onready var retry_timer = get_node("RetryTimer")
 onready var hud = get_node("Hud")
-onready var audio_player = get_node("AudioPlayer")
+onready var drop_player = get_node("Sounds/DropPlayer")
+onready var score_player = get_node("Sounds/ScorePlayer")
+onready var miss_player = get_node("Sounds/MissPlayer")
 onready var projectile_list = get_node("Projectiles")
 onready var player_miss = get_node("PlayerMiss")
 onready var title_screen = get_node("TitleScreen")
@@ -93,9 +93,9 @@ func _on_projectile_timer_timeout():
 			has_projectile = true
 	
 	# check if there is a projectile at this index and the score sound isn't playing
-	if has_projectile && !audio_player.is_voice_active(score_voice):
+	if has_projectile:
 		# play the drop sound
-		audio_player.play("drop")
+		drop_player.play("drop")
 	
 	# check if we've reached the end of the projectiles
 	if tick_index == projectile_columns:
@@ -131,7 +131,7 @@ func _on_collision():
 	player.queue_free()
 	
 	# play the die sound
-	audio_player.play("die")
+	miss_player.play("die")
 	
 	# show the player miss sprite
 	player_miss.show()
@@ -141,8 +141,8 @@ func _on_collision():
 
 
 func _on_score():
-	# play the score sound and store its id
-	score_voice = audio_player.play("score")
+	# play the score sound
+	score_player.play("score")
 	# increase the score by 1
 	hud.score += 1
 	# store the current score
