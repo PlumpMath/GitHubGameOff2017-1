@@ -274,6 +274,8 @@ max_lines_visible = -1
 
 [node name="Sounds" type="Node" parent="."]
 
+editor/display_folded = true
+
 [node name="DropPlayer" type="SamplePlayer" parent="Sounds"]
 
 config/polyphony = 3
